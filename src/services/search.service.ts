@@ -20,10 +20,10 @@ class SearchService {
                 await searchItem(q, limit).then((res: AxiosResponse) => {
                     responseData = this.mapper.searchMap(res.data.results);
                 }).catch((err) => {
-                    return response.status(500).json({
-                        statusCode: 500,
+                    return response.status(err.response.status).json({
+                        statusCode: err.response.status,
                         message: 'Meli API error!',
-                        error: err
+                        error: err.response.data
                     });
                 });
 

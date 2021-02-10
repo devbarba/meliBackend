@@ -21,17 +21,17 @@ class ItemService {
                     await getItemDescription(id).then((resDescription: AxiosResponse) => {
                         responseData = this.mapper.itemMap(resItem.data, resDescription.data);
                     }).catch((err) => {
-                        return response.status(500).json({
-                            statusCode: 500,
+                        return response.status(err.response.status).json({
+                            statusCode: err.response.status,
                             message: 'Meli API error!',
-                            error: err
+                            error: err.data
                         });
                     });
                 }).catch((err) => {
-                    return response.status(500).json({
-                        statusCode: 500,
+                    return response.status(err.response.status).json({
+                        statusCode: err.response.status,
                         message: 'Meli API error!',
-                        error: err
+                        error: err.response.data
                     });
                 });
 

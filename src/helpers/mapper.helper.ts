@@ -40,7 +40,8 @@ class Mapper {
         let categories: string[] = [];
 
         items.forEach(item => {
-            categories.push(item.category_id)
+            const catExists = categories.includes(item.category_id);
+            if (!catExists) categories.push(item.category_id)
         });
 
         return categories;
@@ -52,7 +53,7 @@ class Mapper {
             title: item.title,
             price: {
                 currency: item.currency_id,
-                amount: moneyFormat(Number(item.price)),
+                amount: moneyFormat(item.price),
             },
             picture: item.thumbnail,
             condition: item.condition,
@@ -69,7 +70,7 @@ class Mapper {
                 title: item.title,
                 price: {
                     currency: item.currency_id,
-                    amount: moneyFormat(Number(item.price)),
+                    amount: moneyFormat(item.price),
                 },
                 picture: item.thumbnail,
                 condition: item.condition,
