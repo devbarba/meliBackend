@@ -32,10 +32,6 @@ routes.get(
 routes.get(
     '/items/:id',
     (request: Request, response: Response) => {
-        const errors = validationResult(request);
-        if (!errors.isEmpty()) {
-            return response.status(422).json({ errors: errors.array() });
-        }
         itemController.getItemById(request, response);
     }
 );
