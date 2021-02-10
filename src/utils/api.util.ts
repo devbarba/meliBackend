@@ -9,3 +9,11 @@ const api = axios.create({
 export const searchItem = async (query: any, limit: any) => {
     return await api.get(`${config.apis.meli.url}/sites/${config.apis.meli.region}/search?q=${query}&limit=${limit ? limit : config.apis.meli.limit}`);
 }
+
+export const getItem = async (id: string) => {
+    return await api.get(`${config.apis.meli.url}/items/${id}`);
+}
+
+export const getItemDescription = async (id: string) => {
+    return await api.get(`${config.apis.meli.url}/items/${id}/description`);
+}
