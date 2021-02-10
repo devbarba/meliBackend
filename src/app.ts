@@ -35,7 +35,7 @@ class App {
     }
 
     private routes() {
-        this.server.use(routes);
+        this.server.use('/api', routes);
     }
 }
 

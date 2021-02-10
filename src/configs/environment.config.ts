@@ -20,11 +20,10 @@ const configs = {
     projectVersion: pack.version,
   },
   apis: {
-    meliSearch: {
-      url: addEnv({ key: 'ML_SEARCH_URL', required: true }),
-    },
-    meliItem: {
-      url: addEnv({ key: 'ML_ITEM_URL', required: true }),
+    meli: {
+      url: addEnv({ key: 'ML_API_URL', required: true }),
+      region: addEnv({ key: 'ML_REGION', required: true }),
+      limit: addEnv({ key: 'ML_LIMIT', required: true }),
     },
   }
 };
