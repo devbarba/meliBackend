@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { searchItem } from '../utils/api.util';
 import Mapper from '../helpers/mapper.helper';
-import { AxiosResponse } from 'axios';
 
 class SearchService {
     private readonly mapper = new Mapper;
@@ -14,28 +13,22 @@ class SearchService {
 
             const { q, limit } = request.query;
 
-            if (q) {
-                let responseData;
-
-                await searchItem(q, limit).then((res: AxiosResponse) => {
-                    responseData = this.mapper.searchMap(res.data.results);
-                }).catch((err) => {
-                    return response.status(err.response.status).json({
-                        statusCode: err.response.status,
-                        message: 'Meli API error!',
-                        error: err.response.data
-                    });
+            if (!q)
+                return response.status(404).json({
+                    statusCode: 404,
+                    message: 'Items not found!'
                 });
 
-                return response.status(200).json(responseData);
-            }
+            const {data: resItem } = await searchItem(q, limit);
+            const responseData = this.mapper.searchMap(resItem.results);
 
-            return response.status(404).json({
-                statusCode: 404,
-                message: 'Items not found!'
-            });
+            return response.status(200).json(responseData);
         } catch(err) {
-            return response.status(400).json({ error: err.message });
+            return response.status(err.response.status).json({
+                statusCode: err.response.status,
+                message: 'Meli API error!',
+                error: err.response.data
+            });
         }
     }
 }

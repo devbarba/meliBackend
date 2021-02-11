@@ -1,9 +1,9 @@
+import 'express-async-errors';
 import dotenv from 'dotenv';
 import errorHandler from 'errorhandler';
 import bodyParser from 'body-parser';
 import express, { Application } from 'express';
 import cors from 'cors';
-import 'express-async-errors';
 import routes from './routes/index.route';
 import errorMiddleware from './middlewares/error.middleware';
 

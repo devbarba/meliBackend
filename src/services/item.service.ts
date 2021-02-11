@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { getItem, getItemDescription } from '../utils/api.util';
 import Mapper from '../helpers/mapper.helper';
-import { AxiosResponse } from 'axios';
 
 class ItemService {
     private readonly mapper = new Mapper;
@@ -14,36 +13,23 @@ class ItemService {
 
             const { id } = request.params;
 
-            if (id) {
-                let responseData;
-
-                await getItem(id).then(async (resItem: AxiosResponse) => {
-                    await getItemDescription(id).then((resDescription: AxiosResponse) => {
-                        responseData = this.mapper.itemMap(resItem.data, resDescription.data);
-                    }).catch((err) => {
-                        return response.status(err.response.status).json({
-                            statusCode: err.response.status,
-                            message: 'Meli API error!',
-                            error: err.data
-                        });
-                    });
-                }).catch((err) => {
-                    return response.status(err.response.status).json({
-                        statusCode: err.response.status,
-                        message: 'Meli API error!',
-                        error: err.response.data
-                    });
+            if (!id)
+                return response.status(404).json({
+                    statusCode: 404,
+                    message: 'Item not found!'
                 });
 
-                return response.status(200).json(responseData);
-            }
+            const { data: resItem} = await getItem(id);
+            const { data: resDescription } = await getItemDescription(id);
+            const responseData = this.mapper.itemMap(resItem, resDescription);
 
-            return response.status(404).json({
-                statusCode: 404,
-                message: 'Item not found!'
-            });
+            return response.status(200).json(responseData);
         } catch(err) {
-            return response.status(400).json({ error: err.message });
+            return response.status(err.response.status).json({
+                statusCode: err.response.status,
+                message: 'Meli API error!',
+                error: err.response.data
+            });
         }
     }
 }
