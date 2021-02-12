@@ -24,7 +24,6 @@ class SearchService {
 
             return response.status(200).json(responseData);
         } catch(err) {
-            console.log(err)
             return response.status(err.response.status).json({
                 statusCode: err.response.status,
                 message: 'Meli API error!',
