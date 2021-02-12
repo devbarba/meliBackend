@@ -11,6 +11,9 @@
     "start": "ts-node src/server.ts",
     "test": "jest"
   },
+  "engines": {
+      "node": "12.13.0"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
