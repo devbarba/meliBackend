@@ -2,13 +2,12 @@
   "name": "meliBackend",
   "version": "1.0.0",
   "description": "A RESTful API written with NodeJS that does make an integration with Mercado Libre.",
-  "main": "index.js",
   "author": "Harbs <harbsprog@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts",
-    "start": "ts-node src/server.ts",
+    "start": "node dist/src/server.ts",
     "test": "jest"
   },
   "engines": {
