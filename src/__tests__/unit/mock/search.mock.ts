@@ -27,6 +27,56 @@ export const searchReturnDiferentCategoriesMock = [
     }
 ];
 
+export const filtersResultMock = [
+    {
+        "id": "category",
+        "name": "Categorías",
+        "type": "text",
+        "values": [
+        {
+            "id": "MLA1652",
+            "name": "Notebooks",
+            "path_from_root": [
+            {
+                "id": "MLA1648",
+                "name": "Computación"
+            },
+            {
+                "id": "MLA430687",
+                "name": "Laptops y Accesorios"
+            },
+            {
+                "id": "MLA1652",
+                "name": "Notebooks"
+            }
+            ]
+        }
+        ]
+    },
+    {
+        "id": "PROCESSOR_BRAND",
+        "name": "Marca del procesador",
+        "type": "STRING",
+        "values": [
+        {
+            "id": "7855833",
+            "name": "Intel"
+        }
+        ]
+    },
+    {
+        "id": "BRAND",
+        "name": "Marca",
+        "type": "STRING",
+        "values": [
+        {
+            "id": "9344",
+            "name": "Apple"
+        }
+        ]
+    },
+];
+
 export const searchReturnEqualCategoriesMock = [
     {
       "id": "MLA620399412",

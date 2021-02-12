@@ -4,7 +4,8 @@ import {
     searchReturnEqualCategoriesMock,
     searchReturnMock,
     itemReturnMock,
-    descriptionMock
+    descriptionMock,
+    filtersResultMock
 } from './mock/search.mock';
 
 describe('`Unit test to class ../../helpers/mapper.helper`', () => {
@@ -24,32 +25,21 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
 
     test('Should return an parsed array with diferrent categories_ids when categoriesMap() called.', async () => {
         expect.assertions(4);
-        const categoriesMap = new Mapper().categoriesMap(searchReturnDiferentCategoriesMock);
+        const categoriesMap = new Mapper().categoriesMap(searchReturnDiferentCategoriesMock, filtersResultMock);
 
         expect(categoriesMap).toBeInstanceOf(Array);
-        expect(categoriesMap).toHaveLength(2);
+        expect(categoriesMap).toHaveLength(3);
         expect(categoriesMap).toMatchObject([
-            'MLA30810',
-            'MLA30812'
-        ]);
-        expect(categoriesMap).toBeDefined();
-    });
-
-    test('Should return an parsed array with equal categories_ids when categoriesMap() called.', async () => {
-        expect.assertions(4);
-        const categoriesMap = new Mapper().categoriesMap(searchReturnEqualCategoriesMock);
-
-        expect(categoriesMap).toBeInstanceOf(Array);
-        expect(categoriesMap).toHaveLength(1);
-        expect(categoriesMap).toMatchObject([
-            'MLA30810'
+            "Computación",
+            "Laptops y Accesorios",
+            "Notebooks",
         ]);
         expect(categoriesMap).toBeDefined();
     });
 
     test('Should return an parsed result with response of meli search when searchMap() called.', async () => {
         expect.assertions(8);
-        const searchMap = new Mapper().searchMap(searchReturnMock);
+        const searchMap = new Mapper().searchMap(searchReturnMock, filtersResultMock);
 
         expect(searchMap).toBeInstanceOf(Object);
         expect(searchMap).toHaveProperty('author');
@@ -63,7 +53,9 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
               "lastname": "Harbs"
             },
             "categories": [
-              "MLA30810"
+                "Computación",
+                "Laptops y Accesorios",
+                "Notebooks",
             ],
             "items": [
                 {
