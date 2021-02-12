@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "engines": {
-      "node": "12.13.0"
+    "node": "12.13.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -23,7 +23,8 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-validator": "^6.9.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.9",
