@@ -18,7 +18,7 @@ class Mapper {
         return mappedSearch;
     }
 
-    searchMap = (searchData: itemInterface[]): object => {
+    searchMap = (searchData: itemInterface[], filters: any): object => {
         let mappedSearch: searchInterface = {
             author: {},
             categories: {},
@@ -26,7 +26,7 @@ class Mapper {
         };
 
         mappedSearch.author = this.authorMap();
-        mappedSearch.categories = this.categoriesMap(searchData);
+        mappedSearch.categories = this.categoriesMap(searchData, filters);
         mappedSearch.items = this.itemsMap(searchData);
 
         return mappedSearch;
@@ -36,12 +36,23 @@ class Mapper {
        return { name: this.name, lastname: this.lastName }
     }
 
-    categoriesMap = (items: itemInterface[]): Array<string> => {
+    categoriesMap = (items: itemInterface[], filters: any): Array<string> => {
         let categories: string[] = [];
 
         items.forEach(item => {
-            const catExists = categories.includes(item.category_id);
-            if (!catExists) categories.push(item.category_id)
+            const allFilters = filters.filter((f: any) => f.name == 'Categorías');
+
+            if (allFilters) {
+                allFilters.forEach((cat: any) => {
+                    cat.values.forEach((catVal: any) => {
+                        if (!categories.includes(catVal.name)){
+                            catVal.path_from_root.forEach((ctg: any) => {
+                                categories.push(ctg.name);
+                            })
+                        }
+                    })
+                })
+            }
         });
 
         return categories;
@@ -74,7 +85,8 @@ class Mapper {
                 },
                 picture: item.thumbnail,
                 condition: item.condition,
-                free_shipping: item.shipping.free_shipping
+                free_shipping: item.shipping.free_shipping,
+                state: item.seller_address?.state.name
             };
         });
     }

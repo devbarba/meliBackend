@@ -21,7 +21,11 @@ export interface itemInterface {
     shipping: {
         free_shipping: string | boolean;
     };
-    seller_address?: object;
+    seller_address?: {
+        state: {
+            name: string;
+        };
+    };
     attributes?: object;
     original_price?: number;
     category_id: string;
@@ -30,6 +34,21 @@ export interface itemInterface {
     catalog_product_id?: string | null;
     tags?: Array<string>;
     order_backend?: number;
+    filters?: [
+        {
+            id: string;
+            name: string;
+            type: string;
+            values: {
+                id?: string;
+                name?: string;
+                path_from_root?: {
+                    id?: string;
+                    name: string;
+                }[]
+            }[]
+        }[]
+    ]
 }
 
 export interface itemResultInterface {

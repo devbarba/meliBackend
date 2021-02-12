@@ -20,7 +20,7 @@ class SearchService {
                 });
 
             const {data: resItem } = await searchItem(q, limit);
-            const responseData = this.mapper.searchMap(resItem.results);
+            const responseData = this.mapper.searchMap(resItem.results, resItem.filters);
 
             return response.status(200).json(responseData);
         } catch(err) {
