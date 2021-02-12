@@ -134,7 +134,8 @@ First of all, I would like to thank you for the opportunity to be able to take t
 			},
 			"picture": "http://http2.mlstatic.com/D_738237-MLA44060063201_112020-O.jpg",
 			"condition": "new",
-			"free_shipping": true
+			"free_shipping": "true",
+            "state": "Entre Ríos"
 		},
 		{
 			"id": "MLA899835631",
@@ -145,7 +146,8 @@ First of all, I would like to thank you for the opportunity to be able to take t
 			},
 			"picture": "http://http2.mlstatic.com/D_703565-MLA44240104856_122020-O.jpg",
 			"condition": "new",
-			"free_shipping": true
+			"free_shipping": "true",
+            "state": "Entre Ríos"
 		}
 	]
 }
