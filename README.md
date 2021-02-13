@@ -239,7 +239,7 @@ To run the application on your machine, follow these steps:
 
 4. yarn start or yarn dev:server `Run the application`
 
-5. Access: `http://0.0.0.0:3000` If you present a welcome message everything went well.
+5. Access: `http://0.0.0.0:3001` If you present a welcome message everything went well.
 
 ## Tests
 
