@@ -1,6 +1,7 @@
 import { moneyFormat } from "../utils/other.util";
 import { descriptionResultInterface, itemInterface, itemResultInterface } from "../interfaces/item.interface";
 import { searchInterface } from "../interfaces/search.interface";
+import { categoryInterface } from "../interfaces/category.interface";
 
 class Mapper {
     private readonly name: string = 'João Pedro';
@@ -36,6 +37,20 @@ class Mapper {
        return { name: this.name, lastname: this.lastName }
     }
 
+    categoryMap = (categoryBody: categoryInterface) => {
+        let categories: string[] = [];
+
+        categoryBody.path_from_root.forEach((category) => {
+            categories.push(category.name);
+        });
+
+        return {
+            id: categoryBody.id,
+            name: categoryBody.name,
+            nested_categories: categories
+        };
+    }
+
     categoriesMap = (items: itemInterface[], filters: any): Array<string> => {
         let categories: string[] = [];
 
@@ -66,7 +81,7 @@ class Mapper {
                 currency: item.currency_id,
                 amount: moneyFormat(item.price),
             },
-            picture: item.thumbnail,
+            picture: item.thumbnail.replace('-I.jpg', '-O.jpg'),
             condition: item.condition,
             free_shipping: item.shipping.free_shipping,
             sold_quantity: item.sold_quantity,

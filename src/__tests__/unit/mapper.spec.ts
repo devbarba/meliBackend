@@ -1,11 +1,11 @@
 import Mapper from '../../helpers/mapper.helper';
 import {
     searchReturnDiferentCategoriesMock,
-    searchReturnEqualCategoriesMock,
     searchReturnMock,
     itemReturnMock,
     descriptionMock,
-    filtersResultMock
+    filtersResultMock,
+    categoryReturnMock
 } from './mock/search.mock';
 
 describe('`Unit test to class ../../helpers/mapper.helper`', () => {
@@ -116,7 +116,7 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
                 "currency": "ARS",
                 "amount": "ARS 1,233.96"
               },
-              "picture": "http://http2.mlstatic.com/D_819647-MLA31037059086_062019-I.jpg",
+              "picture": "http://http2.mlstatic.com/D_819647-MLA31037059086_062019-O.jpg",
               "condition": "new",
               "free_shipping": false,
               "sold_quantity": 500,
@@ -148,7 +148,7 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
               "currency": "ARS",
               "amount": "ARS 1,233.96"
             },
-            "picture": "http://http2.mlstatic.com/D_819647-MLA31037059086_062019-I.jpg",
+            "picture": "http://http2.mlstatic.com/D_819647-MLA31037059086_062019-O.jpg",
             "condition": "new",
             "free_shipping": false,
             "sold_quantity": 500,
@@ -187,6 +187,29 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
                 "free_shipping": false
                 },
         ]);
+        expect(itemsMap).toBeDefined();
+    });
+
+    test('Should return an parsed result of meli category by category_id when categoryMap() called.', async () => {
+        expect.assertions(7);
+        const itemsMap = new Mapper().categoryMap(categoryReturnMock);
+
+        expect(itemsMap).toBeInstanceOf(Object);
+        expect(itemsMap.nested_categories).toHaveLength(5);
+        expect(itemsMap).toHaveProperty('id');
+        expect(itemsMap).toHaveProperty('name');
+        expect(itemsMap).toHaveProperty('nested_categories');
+        expect(itemsMap).toMatchObject({
+            "id": "MLA30810",
+            "name": "Multímetros",
+            "nested_categories": [
+              "Herramientas y Construcción",
+              "Herramientas",
+              "Testers y Equipos de Medición",
+              "Medidores de Electricidad",
+              "Multímetros"
+            ]
+        });
         expect(itemsMap).toBeDefined();
     });
 });

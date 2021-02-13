@@ -56,7 +56,6 @@ export interface itemResultInterface {
     item: object;
 }
 
-
 export interface descriptionResultInterface {
     text: string;
     plain_text: string;
