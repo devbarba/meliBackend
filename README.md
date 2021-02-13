@@ -11,7 +11,7 @@ Challenge proposed by Mercado Libre in a selection process for a vacancy in Fron
 - Build the following endpoint to be used from the views.
   - `/api/items?q=:query`
     - This endpoint is reponsible for search in meli api on `https://api.mercadolibre.com/sites/MLA/search?q=:query` and return the results in the indicated format:.
-```json
+```shell
 {
  “author”: {
  “name”: String
@@ -41,7 +41,7 @@ Challenge proposed by Mercado Libre in a selection process for a vacancy in Fron
 - Build the following endpoint to be used from the views.
   - `/api/items/:id`
     - This endpoint is reponsible for get an item in meli api on `https://api.mercadolibre.com/items/:id` and `https://api.mercadolibre.com/items/:id/description` returning the results in the indicated format:.
-```json
+```shell
 {
  “author”: {
  “name”: String
