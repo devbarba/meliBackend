@@ -8,7 +8,7 @@ const notExistingItem = 'MLA6203994199999999999';
 
 describe('`GET /items/:id`', () => {
     test('Should return `200` with an existing item.', async () => {
-        expect.assertions(16);
+        expect.assertions(18);
 
         const response = await request(app)
             .get(`${basePath}/items/${existingItem}`);
@@ -20,6 +20,8 @@ describe('`GET /items/:id`', () => {
         expect(response.body).toHaveProperty('item');
         expect(response.body).toHaveProperty('item.id');
         expect(response.body).toHaveProperty('item.title');
+        expect(response.body).toHaveProperty('item.category');
+        expect(response.body).toHaveProperty('item.category.id');
         expect(response.body).toHaveProperty('item.price');
         expect(response.body).toHaveProperty('item.price.currency');
         expect(response.body).toHaveProperty('item.price.amount');
@@ -32,7 +34,7 @@ describe('`GET /items/:id`', () => {
     });
 
     test('Should return `404` with an not existing resource.', async () => {
-        expect.assertions(22);
+        expect.assertions(24);
 
         const response = await request(app)
             .get(`${basePath}/items/${notExistingItemResource}`);
@@ -44,6 +46,8 @@ describe('`GET /items/:id`', () => {
         expect(response.body).not.toHaveProperty('item');
         expect(response.body).not.toHaveProperty('item.id');
         expect(response.body).not.toHaveProperty('item.title');
+        expect(response.body).not.toHaveProperty('item.category');
+        expect(response.body).not.toHaveProperty('item.category.id');
         expect(response.body).not.toHaveProperty('item.price');
         expect(response.body).not.toHaveProperty('item.price.currency');
         expect(response.body).not.toHaveProperty('item.price.amount');

@@ -9,3 +9,4 @@ temp/
 tmp/*
 !tmp/.gitkeep
 dist
+coverage

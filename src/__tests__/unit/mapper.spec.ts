@@ -112,6 +112,9 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
             "item": {
               "id": "MLA620399412",
               "title": "Multimetro Digital Temperatura Capacidad Frecuencia 890g",
+              "category": {
+                  "id": "MLA30810"
+              },
               "price": {
                 "currency": "ARS",
                 "amount": "ARS 1,233.96"
@@ -144,6 +147,9 @@ describe('`Unit test to class ../../helpers/mapper.helper`', () => {
         expect(itemMap).toMatchObject({
             "id": "MLA620399412",
             "title": "Multimetro Digital Temperatura Capacidad Frecuencia 890g",
+            "category": {
+                "id": "MLA30810"
+            },
             "price": {
               "currency": "ARS",
               "amount": "ARS 1,233.96"

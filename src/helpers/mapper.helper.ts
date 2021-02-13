@@ -77,6 +77,9 @@ class Mapper {
         return {
             id: item.id,
             title: item.title,
+            category: {
+                id: item.category_id,
+            },
             price: {
                 currency: item.currency_id,
                 amount: moneyFormat(item.price),
