@@ -246,6 +246,11 @@ To run the application on your machine, follow these steps:
 To run the tests run the following command:
 `yarn test`
 
+## Hosted on Heroku
+```shell
+http://meli-middle.herokuapp.com/api
+```
+
 ## Author
 
 [Harbs](https://github.com/devbarba)
