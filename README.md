@@ -231,9 +231,9 @@ To run the application it is necessary to have installed Node in version v12.13.
 
 To run the application on your machine, follow these steps:
 
-1. git clone [https://github.com/devbarba/meli_middleend_challenge.git](https://github.com/devbarba/meli_middleend_challenge.git)
+1. git clone [https://github.com/devbarba/meliBackend.git](https://github.com/devbarba/meliBackend.git)
 
-2. cd meli_middleend_challenge `Access the project folder`
+2. cd meliBackend `Access the project folder`
 
 3. yarn install `Performs installation of dependencies`
 
